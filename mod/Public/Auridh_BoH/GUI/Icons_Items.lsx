@@ -9,8 +9,8 @@
                     <attribute id="Width" type="int64" value="64"/>
                 </node>
                 <node id="TextureAtlasPath">
-                    <attribute id="Path" type="LSString" value="Assets/Textures/Icons/AutosortContainers_Icons.dds"/>
-                    <attribute id="UUID" type="FixedString" value="de036323-9dd8-4edd-906f-9de484e3f628"/>
+                    <attribute id="Path" type="LSString" value="Assets/Textures/Icons/BagOfHolding_Icons.dds"/>
+                    <attribute id="UUID" type="FixedString" value="7125f0d1-3976-4267-a4d7-7be428edc492"/>
                 </node>
                 <node id="TextureAtlasTextureSize">
                     <attribute id="Height" type="int64" value="2048"/>
