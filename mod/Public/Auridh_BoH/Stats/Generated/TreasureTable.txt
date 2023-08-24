@@ -1,0 +1,2 @@
+new treasuretable "BoH_BagOfHolding_TT"
+CanMerge 1
