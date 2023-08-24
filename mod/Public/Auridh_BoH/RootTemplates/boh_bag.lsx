@@ -25,13 +25,6 @@
 					<attribute id="WalkThrough" type="bool" value="True" />
 					<attribute id="_OriginalFileVersion_" type="int64" value="144115188075855912" />
 					<children>
-						<node id="Tags">
-							<children>
-								<node id="Tag">
-									<attribute id="Object" type="guid" value="b148cfca-53d8-4b73-52b0-08de4a395e23" />
-								</node>
-							</children>
-						</node>
 						<node id="GameMaster" />
 						<node id="InventoryList">
 							<children>
