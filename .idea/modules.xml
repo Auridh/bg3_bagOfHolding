@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BagOfHolding.iml" filepath="$PROJECT_DIR$/BagOfHolding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Osiris/Osiris.iml" filepath="$PROJECT_DIR$/../../Osiris/Osiris.iml" />
     </modules>
   </component>
 </project>
