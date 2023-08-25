@@ -10,7 +10,7 @@ If you're using the BG3ModManager, you can go to "Tools" -> "Download & Extract 
 
 
 ## Manual Installation
-1. Download [the Mod]() from Nexusmods
+1. Download [the Mod](https://www.nexusmods.com/baldursgate3/mods/1451/?tab=files) from Nexusmods
 2. Extract the zip file to `%localappdata%\Larian Studios\Baldur's Gate 3\Mods`
 3. Open `%localappdata%\Larian Studios\Baldur's Gate 3\PlayerProfiles\Public\modsettings.lsx` in a text editor
 4. Add parts like instructed below:

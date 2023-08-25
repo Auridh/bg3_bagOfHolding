@@ -1,6 +1,6 @@
 # Additional Autosort Containers
 Adds a bag of holding to the game. All items added to this bag get their weight reduced to zero!
-<br><br>[Download]() at Nexusmods
+<br><br>[Download](https://www.nexusmods.com/baldursgate3/mods/1451) at Nexusmods
 
 ![image of the item description](/img/item_desc.png)
 
