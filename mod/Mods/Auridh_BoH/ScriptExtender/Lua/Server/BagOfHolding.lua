@@ -14,7 +14,9 @@ local Event_ReduceWeightEnd = 'BoH_ReduceWeightEnd'
 
 -- Osiris Events
 local Osi_Evt_EntityEvent = 'EntityEvent'
-
+local Osi_Evt_SavegameLoaded = 'SavegameLoaded'
+local Osi_Evt_ItemMoved = 'Moved'
+local Osi_Evt_AddedTo = 'AddedTo'
 
 
 function ExecuteForPlayerCharacters(action)
@@ -27,28 +29,19 @@ function ExecuteForPlayerCharacters(action)
 end
 
 function ApplyReducedWeightToItem(entity)
-	Osi.RemoveStatus(entity, Status_ReduceWeightChar, entity)
-	Osi.ApplyStatus(entity, Status_ReduceWeightChar, 60, 1, entity)
+	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) ~= 1 then
+		Osi.ApplyStatus(entity, Status_ReduceWeightChar, -1, 1, entity)
+	end
 end
 
 function ApplyReducedWeightByPlayer(player)
 	Osi.IterateInventoryByTemplate(player, Uid_BagOfHolding, Event_BagSearch, Event_BagSearchEnd)
 end
 
-local tickCounter = 0
-function OnTick()
-	if tickCounter < 1000 then
-		tickCounter = tickCounter + 1
-	else
-		tickCounter = 0
-		ExecuteForPlayerCharacters(ApplyReducedWeightByPlayer)
-	end
-end
-
--- Event listeners
-Ext.Events.Tick:Subscribe(OnTick)
-
 -- Osiris event listeners
+Ext.Osiris.RegisterListener(Osi_Evt_SavegameLoaded, 0, "after", function()
+	ExecuteForPlayerCharacters(ApplyReducedWeightByPlayer)
+end)
 Ext.Osiris.RegisterListener(Osi_Evt_EntityEvent, 2, 'after', function (entity, event)
 	local choices = {
 		[Event_BagSearch] = function(item)
@@ -78,5 +71,24 @@ Ext.Osiris.RegisterListener(Osi_Evt_EntityEvent, 2, 'after', function (entity, e
 	local func = choices[event]
 	if func then
 		func(entity)
+	end
+end)
+
+Ext.Osiris.RegisterListener(Osi_Evt_ItemMoved, 1, 'after', function(entity)
+	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 then
+		Ext.Utils.Print('MOVED!! -> ' .. entity)
+		Osi.RemoveStatus(entity, Status_ReduceWeightChar, entity)
+	end
+end)
+
+Ext.Osiris.RegisterListener(Osi_Evt_AddedTo, 3, 'after', function(entity, char, type)
+	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 then
+		Ext.Utils.Print('AddedTo!! -> ' .. entity .. ' | ' .. char .. ' | ' .. type)
+		Osi.RemoveStatus(entity, Status_ReduceWeightChar, entity)
+	end
+
+	Ext.Utils.Print(string.sub(char, 1, 20))
+	if Osi.IsInInventory(entity) == 1 and string.sub(char, 1, 20) == 'BoH_OBJ_BagOfHolding' then
+		Osi.ApplyStatus(entity, Status_ReduceWeightChar, -1, 1, entity)
 	end
 end)
