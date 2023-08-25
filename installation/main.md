@@ -5,6 +5,9 @@ Choose one of the following methods:
 * Install manually
 
 The [Script Extender](https://github.com/Norbyte/bg3se/releases) by Norbyte is **required** for this mod to function!
+You install it by dropping it into the bin folder in your game directory.
+If you're using the BG3ModManager, you can go to "Tools" -> "Download & Extract Script Extender" and have the manager install it for you.
+
 
 ## Manual Installation
 1. Download [the Mod]() from Nexusmods
