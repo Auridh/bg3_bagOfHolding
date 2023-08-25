@@ -4,6 +4,8 @@ Choose one of the following methods:
 * Use the [BG3ModManager](https://github.com/LaughingLeader/BG3ModManager)
 * Install manually
 
+The [Script Extender](https://github.com/Norbyte/bg3se/releases) by Norbyte is **required** for this mod to function!
+
 ## Manual Installation
 1. Download [the Mod]() from Nexusmods
 2. Extract the zip file to `%localappdata%\Larian Studios\Baldur's Gate 3\Mods`
