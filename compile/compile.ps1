@@ -1,5 +1,5 @@
 param ($n, $b)
-git checkout -b $b
+git checkout $b
 
 $absPath = Resolve-Path -Path "./"
 divine -a convert-loca -g bg3 -s "$absPath/mod/Localization/English/BagOfHolding.xml" -d "$absPath/mod/Localization/English/BagOfHolding.loca";
