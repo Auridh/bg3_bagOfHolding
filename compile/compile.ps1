@@ -6,5 +6,5 @@ divine -a convert-resources -g bg3 -s "$absPath/mod/Public/Auridh_BoH/Content/UI
 divine -a convert-resources -g bg3 -s "$absPath/mod/Public/Auridh_BoH/GUI" -d "$absPath/mod/Public/Auridh_BoH/GUI" -i lsx -o lsf;
 divine -a convert-resources -g bg3 -s "$absPath/mod/Public/Auridh_BoH/RootTemplates" -d "$absPath/mod/Public/Auridh_BoH/RootTemplates" -i lsx -o lsf;
 #divine -a convert-resources -g bg3 -s "$absPath/mod/Public/Auridh_BoH/Tags" -d "$absPath/mod/Public/Auridh_BoH/Tags" -i lsx -o lsf;
-divine -a create-package -g bg3 -s "$absPath/mod" -d "$absPath/BagOfHolding.pak" -c lz4;
-Compress-Archive -Path "$absPath/BagOfHolding.pak" -DestinationPath "$absPath/BagOfHolding.zip" -Force
+divine -a create-package -g bg3 -s "$absPath/mod" -d "$absPath/compile/files/BagOfHolding.pak" -c lz4;
+Compress-Archive -Path "$absPath/compile/files/BagOfHolding.pak" -DestinationPath "$absPath/compile/files/BagOfHolding.zip" -Force
