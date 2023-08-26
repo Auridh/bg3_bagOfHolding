@@ -3,7 +3,7 @@
     <option name="SCRIPT_TEXT" value="divine -g bg3 -s &quot;./mod/Localization/English/BagOfHolding.xml&quot; -d &quot;./mod/Localization/English/BagOfHolding.loca&quot; divine -g bg3 -s &quot;./mod/Public/Auridh_BoH/Content/UI/[PAK]_UI&quot; -d &quot;./mod/Public/Auridh_BoH/Content/UI/[PAK]_UI&quot; -i lsx -o lsf divine -g bg3 -s &quot;./mod/Public/Auridh_BoH/GUI&quot; -d &quot;./mod/Public/Auridh_BoH/GUI&quot; -i lsx -o lsf divine -g bg3 -s &quot;./mod/Public/Auridh_BoH/RootTemplates&quot; -d &quot;./mod/Public/Auridh_BoH/RootTemplates&quot; -i lsx -o lsf divine -g bg3 -s &quot;./mod/Public/Auridh_BoH/Tags&quot; -d &quot;./mod/Public/Auridh_BoH/Tags&quot; -i lsx -o lsf divine -g bg3 -s &quot;./mod&quot; -d &quot;./BagOfHolding.pak&quot; -c lz4" />
     <option name="INDEPENDENT_SCRIPT_PATH" value="false" />
     <option name="SCRIPT_PATH" value="$PROJECT_DIR$/compile/compile.ps1" />
-    <option name="SCRIPT_OPTIONS" value="-n &quot;BagOfHolding_Tut&quot;" />
+    <option name="SCRIPT_OPTIONS" value="-n &quot;BagOfHolding_Tut&quot; -b &quot;feature/tut_summoning&quot;" />
     <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
     <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
