@@ -13,13 +13,11 @@ local Osi_Evt_RemovedFrom = 'RemovedFrom'
 Ext.Osiris.RegisterListener(Osi_Evt_RemovedFrom, 2, 'before', function(entity, container)
 	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 and Osi.GetStatString(container) == Name_BagOfHolding then
 		Osi.RemoveStatus(entity, Status_ReduceWeightChar, container)
-		Osi.RemoveStatus(entity, 'WET', container)
 	end
 end)
 
 Ext.Osiris.RegisterListener(Osi_Evt_AddedTo, 3, 'before', function(entity, container, type)
 	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) ~= 1 and Osi.GetStatString(container) == Name_BagOfHolding then
 		Osi.ApplyStatus(entity, Status_ReduceWeightChar, -1, 1, container)
-		Osi.ApplyStatus(entity, 'WET', -1, 1, container)
 	end
 end)
