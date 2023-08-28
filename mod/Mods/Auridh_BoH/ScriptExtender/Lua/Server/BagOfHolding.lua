@@ -5,23 +5,21 @@ local Name_BagOfHolding = 'BoH_OBJ_BagOfHolding'
 local Status_ReduceWeightChar = 'AC_REDUCE_WEIGHT_CHAR'
 
 -- Osiris Events
-local Osi_Evt_ItemMoved = 'Moved'
 local Osi_Evt_AddedTo = 'AddedTo'
+local Osi_Evt_RemovedFrom = 'RemovedFrom'
 
 
 -- Osiris event listeners
-Ext.Osiris.RegisterListener(Osi_Evt_ItemMoved, 1, 'after', function(entity)
-	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 then
-		Osi.RemoveStatus(entity, Status_ReduceWeightChar, entity)
+Ext.Osiris.RegisterListener(Osi_Evt_RemovedFrom, 2, 'before', function(entity, container)
+	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 and Osi.GetStatString(container) == Name_BagOfHolding then
+		Osi.RemoveStatus(entity, Status_ReduceWeightChar, container)
+		Osi.RemoveStatus(entity, 'WET', container)
 	end
 end)
 
-Ext.Osiris.RegisterListener(Osi_Evt_AddedTo, 3, 'after', function(entity, char, type)
-	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) == 1 then
-		Osi.RemoveStatus(entity, Status_ReduceWeightChar, entity)
-	end
-
-	if Osi.IsInInventory(entity) == 1 and string.sub(char, 1, 20) == Name_BagOfHolding then
-		Osi.ApplyStatus(entity, Status_ReduceWeightChar, -1, 1, entity)
+Ext.Osiris.RegisterListener(Osi_Evt_AddedTo, 3, 'before', function(entity, container, type)
+	if Osi.HasActiveStatus(entity, Status_ReduceWeightChar) ~= 1 and Osi.GetStatString(container) == Name_BagOfHolding then
+		Osi.ApplyStatus(entity, Status_ReduceWeightChar, -1, 1, container)
+		Osi.ApplyStatus(entity, 'WET', -1, 1, container)
 	end
 end)
