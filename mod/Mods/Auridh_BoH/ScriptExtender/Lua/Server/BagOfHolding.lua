@@ -5,6 +5,7 @@ local Template_BagOfHolding = '7471c9a3-e826-4ff2-b04c-b47c5360e46f'
 -- Self defined events
 local Evt_InitContainerDB = 'Evt_InitContainerDB'
 local Evt_InitObjectDB = 'Evt_InitObjectDB'
+local Evt_RemoveContainers = 'Evt_RemoveContainers'
 -- Status names
 local Status_ReduceWeightChar = 'AC_REDUCE_WEIGHT_CHAR'
 local Status_WeightDisplayFix = 'BH_REDUCE_WEIGHT_FIX'
@@ -14,6 +15,8 @@ local Osi_Evt_AddedTo = 'AddedTo'
 local Osi_Evt_RemovedFrom = 'RemovedFrom'
 local Osi_Evt_SavegameLoaded = 'SavegameLoaded'
 local Osi_Evt_EntityEvent = 'EntityEvent'
+local Osi_Evt_CharacterJoinedParty = 'CharacterJoinedParty'
+local Osi_Evt_CharacterLeftParty = 'CharacterLeftParty'
 
 -- Bags of Holding
 local BagsOfHolding = {}
@@ -125,5 +128,15 @@ Ext.Osiris.RegisterListener(Osi_Evt_EntityEvent, 2, 'after', function(entity, ev
 				break
 			end
 		end
+	elseif event == Evt_RemoveContainers then
+		BagsOfHolding[entity] = nil
 	end
+end)
+-- event CharacterJoinedParty((CHARACTER)_Character)
+Ext.Osiris.RegisterListener(Osi_Evt_CharacterJoinedParty, 1, 'after', function(character)
+	Osi.IterateInventoryByTemplate(character, Template_BagOfHolding, Evt_InitContainerDB, Evt_InitContainerDB .. 'End')
+end)
+-- event CharacterLeftParty((CHARACTER)_Character)
+Ext.Osiris.RegisterListener(Osi_Evt_CharacterLeftParty, 1, 'after', function(character)
+	Osi.IterateInventoryByTemplate(character, Template_BagOfHolding, Evt_RemoveContainers, Evt_RemoveContainers .. 'End')
 end)
