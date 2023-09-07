@@ -35,7 +35,7 @@ local function InitAddToBag(objectUid, bagUid)
 end
 
 local function ReduceWeight(objectStats, objectUid, bag)
-	Log('ReduceWeight: %s + %s <= %s', bag.CollectedWeight, objectStats.Weight, WeightLimit)
+	--Log('ReduceWeight: %s + %s <= %s', bag.CollectedWeight, objectStats.Weight, WeightLimit)
 	bag.CollectedWeight	= bag.CollectedWeight + objectStats.Weight
 	bag.Objects.Affected[objectUid] = GetObjectEntry(objectStats)
 
@@ -43,12 +43,12 @@ local function ReduceWeight(objectStats, objectUid, bag)
 	Osi.ApplyStatus(Osi.GetOwner(bag.UUID), Status_WeightDisplayFix, 0, 1, bag.UUID)
 end
 local function AddObjectToBag(objectUid, bagUid)
-	Log('AddObjectToBag: %s | %s', objectUid, bagUid)
+	--Log('AddObjectToBag: %s | %s', objectUid, bagUid)
 	local bag = BagsOfHolding[bagUid]
 	local objectStats = Ext.Stats.Get(Osi.GetStatString(objectUid))
 
 	if bag.CollectedWeight + objectStats.Weight > WeightLimit then
-		Log('Weights too much: %s + %s > %s', bag.CollectedWeight, objectStats.Weight, WeightLimit)
+		--Log('Weights too much: %s + %s > %s', bag.CollectedWeight, objectStats.Weight, WeightLimit)
 		bag.Objects.InQueue[objectUid] = GetObjectEntry(objectStats)
 		return
 	end
@@ -56,12 +56,12 @@ local function AddObjectToBag(objectUid, bagUid)
 	ReduceWeight(objectStats, objectUid, bag)
 end
 local function RemoveObjectFromBag(objectUid, bagUid)
-	Log('RemoveObjectFromBag: %s, %s', objectUid, bagUid)
+	--Log('RemoveObjectFromBag: %s, %s', objectUid, bagUid)
 	local bag = BagsOfHolding[bagUid]
 	local objectStats = Ext.Stats.Get(Osi.GetStatString(objectUid))
 
 	if bag.Objects.Affected[objectUid] ~= nil then
-		Log('Remove boost')
+		--Log('Remove boost')
 		bag.CollectedWeight	= bag.CollectedWeight - objectStats.Weight
 		bag.Objects.Affected[objectUid] = nil
 
@@ -70,7 +70,7 @@ local function RemoveObjectFromBag(objectUid, bagUid)
 
 		local freeWeight = WeightLimit - bag.CollectedWeight
 		for key, value in pairs(bag.Objects.InQueue) do
-			Log('Free weight left: %s [%s / %s]', freeWeight, key, value.Weight)
+			--Log('Free weight left: %s [%s / %s]', freeWeight, key, value.Weight)
 			if freeWeight - value.Weight >= 0 then
 				freeWeight = freeWeight - value.Weight
 				bag.Objects.InQueue[key] = nil
@@ -82,7 +82,7 @@ local function RemoveObjectFromBag(objectUid, bagUid)
 			end
 		end
 	else
-		Log('Remove from queue')
+		--Log('Remove from queue')
 		bag.Objects.InQueue[objectUid] = nil
 	end
 end
