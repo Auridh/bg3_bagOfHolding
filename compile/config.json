@@ -1,0 +1,18 @@
+{
+  "main": {
+    "path": "mod",
+    "pakName": "BagOfHolding",
+    "handle": "Auridh_BoH",
+    "versions": {
+      "main": {
+        "branch": "main"
+      },
+      "ts": {
+        "branch": "tut_summoning"
+      },
+      "blncd": {
+        "branch": "balanced"
+      }
+    }
+  }
+}
