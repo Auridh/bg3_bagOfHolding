@@ -8,10 +8,10 @@
         "branch": "main"
       },
       "ts": {
-        "branch": "tut_summoning"
+        "branch": "feature/tut_summoning"
       },
       "blncd": {
-        "branch": "balanced"
+        "branch": "feature/balanced"
       }
     }
   }
