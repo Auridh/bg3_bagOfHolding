@@ -3,27 +3,19 @@ CanMerge 1
 new subtable "1,1"
 object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
 
-new treasuretable "DEN_Volo_Trade"
+new treasuretable "MOO_InfernalTrader_Trade"
 CanMerge 1
 new subtable "1,1"
 object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
 
-new treasuretable "DEN_Volo_Adventure"
+new treasuretable "HAV_HarperQuarterMaster"
 CanMerge 1
 new subtable "1,1"
 object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
 
 new treasuretable "WYR_Danthelon_Trader"
 CanMerge 1
-new subtable "1,1"
-object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
-new subtable "1,1"
-object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
-new subtable "1,1"
+new subtable "3,1"
 object category "I_BoH_OBJ_BagOfHolding",1,0,0,0,0,0,0,0
 
 new treasuretable "BoH_BagOfHolding_TT"
