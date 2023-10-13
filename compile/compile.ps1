@@ -1,7 +1,7 @@
 param ($m)
 
 function CompileMod {
-    param ($AbsPath,$Handle,$Output,$Branch)
+    param ($AbsPath,$Handle,$OZip,$OPak,$Branch)
 
     git checkout $Branch
 
@@ -35,9 +35,9 @@ function CompileMod {
         }
     }
 
-    divine -a create-package -g bg3 -s "$AbsPath/" -d "$Output.pak" -c lz4
-    Compress-Archive -Path "$Output.pak" -DestinationPath "$Output.zip" -Force
-    Remove-Item -Path "$Output.pak"
+    divine -a create-package -g bg3 -s "$AbsPath/" -d "$OPak.pak" -c lz4
+    Compress-Archive -Path "$OPak.pak" -DestinationPath "$OZip.zip" -Force
+    Remove-Item -Path "$OPak.pak"
 }
 
 $workingDir = Resolve-Path -Path "./"
@@ -65,7 +65,8 @@ foreach ($mod in $mods) {
 
     $modConfig = $config[$modKey]
     $branch = $modVersion -ne $null ? $modConfig.versions[$modVersion].branch : $modConfig.versions.main.branch
-    $output = "$workingDir/compile/files/$($modConfig.pakName)$($modVersion -eq $null ? '' : '_' + $modVersion)"
+    $zip = "$workingDir/compile/files/$($modConfig.pakName)$($modVersion -eq $null ? '' : '_' + $modVersion)"
+    $pak = "$workingDir/compile/files/$($modConfig.pakName)"
 
-    CompileMod -AbsPath "$workingDir/$($modConfig.path)" -Handle $modConfig.handle -Output $output -Branch $branch
+    CompileMod -AbsPath "$workingDir/$($modConfig.path)" -Handle $modConfig.handle -OZip $zip -OPak $pak -Branch $branch
 }
